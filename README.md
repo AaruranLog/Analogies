@@ -14,3 +14,4 @@ https://code.google.com/archive/p/word2vec/
 
 Flask Mega-Tutorial
 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+
