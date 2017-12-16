@@ -1,4 +1,5 @@
+.cache/*
 analogy.pem
 connect.sh
-*__pycache__/*
+/*__pycache__/*
 GoogleNews-vectors-negative300.*
