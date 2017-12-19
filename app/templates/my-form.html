@@ -1,4 +1,9 @@
 <form method="POST">
     <input name="text">
     <input type="submit">
+    {% if output %}
+    <h1>
+    	{{output}}
+    </h1>
+    {% endif %}
 </form>

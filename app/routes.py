@@ -1,6 +1,6 @@
 from flask import render_template, request
 from app import app
-from app import backend
+
 
 @app.route('/')
 @app.route('/index')
@@ -30,11 +30,17 @@ def predict():
 
 @app.route('/predict', methods=['POST'])
 def predict_post():
-	text = request.form('text')
+	text = request.form['text']
+	print(f"text:{text}")
 	try:
 		value = int(text)
-	except ValueError:
-		value = None
+		value = str(value ** 2)
+		print("squared successfully")
+	except:
+		print(f"type(value): {type(value)}")
+		print(f"value:{value}")
+		value = "Invalid input"
+
 	return render_template("my-form.html", output=value)
 
 	
