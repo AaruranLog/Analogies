@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
     Generates a word2vec model trained on categories from nltk's Brown corpus
 """
@@ -48,7 +49,7 @@ def main():
     model = gensim.models.word2vec.Word2Vec(sentences=text)
     todays_date = datetime.date.today().strftime("%Y%m%d")
     model_name = "brown-" + todays_date + ".model"
-    model.save("/Users/fxf231/Documents/git-repos/Analogies/notebooks/" + model_name)
+    model.save("/Users/fxf231/Documents/git-repos/Analogies/app/backend/" + model_name)
     print("Model saved")
 
     print("=" * 20)
