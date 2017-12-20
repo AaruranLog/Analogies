@@ -18,13 +18,16 @@ class CustomCorpus():
         return self
 
     def __next__(self):
-        for category in self.__usable_categories:
+        while self.__usable_categories:
             try:
+                category = self.__usable_categories[0]
                 result = brown.sents(categories=category)[self.index]
                 self.index += 1
                 return result
             except IndexError:
+                print(f"Emptied category: {category}")
                 self.__usable_categories.remove(category)
+                self.index = 0
                 continue
         raise StopIteration
 
@@ -32,7 +35,8 @@ def main():
     """
         Entry point
     """
-    model = gensim.models.word2vec.Word2Vec(sentences=CustomCorpus())
+    text = CustomCorpus()
+    model = gensim.models.word2vec.Word2Vec(sentences=text)
     todays_date = datetime.date.today().strftime("%Y%m%d")
     model_name = "brown-" + todays_date + ".model"
     model.save("/Users/fxf231/Documents/git-repos/Analogies/notebooks/" + model_name)
