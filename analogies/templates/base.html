@@ -1,0 +1,20 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Analogies</title>
+      {% else %}
+      <title>Welcome to Analogies</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>
+            Analogies: 
+            <a href="/">Home</a>
+            <a href="/index">What?</a>
+            <a href="/source-code">How?</a>
+            <a href="/brown/word">Word Lookup</a>
+        </div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -2,6 +2,7 @@
 	Helper functions for pre-trained model usage
 """
 
+import gensim
 import gensim.models.word2vec as w2v
 
 
@@ -12,14 +13,13 @@ class Model(object):
         super(Model, self).__init__()
         self.path = path
         try:
-            self.model = w2v.load(path)
+            self.model = gensim.models.Word2Vec.load(path)
         except FileNotFoundError:
             self.model = None
             raise ValueError("File not found at path: {path}")
 
     def lookup(self, word):
         """Lookup word in model and return embedded vector"""
-        
         try:
             return self.model[word]
         except Exception:

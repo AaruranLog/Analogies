@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='app',
+    name='analogies',
     version='0.1',
     description="Analogy solver, with Flask front-end",
     author="Aaruran Elamurugaiyan",

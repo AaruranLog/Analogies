@@ -1,1 +1,1 @@
-from app import app
+from analogies import app

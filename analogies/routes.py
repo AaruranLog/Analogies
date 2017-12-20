@@ -1,28 +1,19 @@
 from flask import render_template, request
-from app import app
-from . import backend
+from analogies import app
+from analogies.backend.word_vectors import Model
+import numpy as np
+
 
 @app.route('/')
 @app.route('/index')
 def index():
-	user = dict(username='Visitor')
-	posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-	return render_template('index.html', title='Home', user=user, posts=posts)
+	return render_template('index.html', title='Home')
 
+# TODO: update this route to include Flask Mega-tutorial etc.
 @app.route('/source-code')
 def source():
 	git_link = 'https://github.com/AaruranE/Analogies'
 	return render_template('references.html', title='Source Code', git_link=git_link)
-
 
 @app.route('/predict')
 def predict():
@@ -45,17 +36,17 @@ def predict_post():
 
 @app.route('/brown/word')
 def brown_word2vec():
-	return render_template('my-form.html')
+	return render_template('word-embedding.html')
 
-@app.route('/brown/word/', methods=['POST'])
+@app.route('/brown/word', methods=['POST'])
 def brown_word2vec_post():
 	text = request.form['text']
 	print(f"text:{text}")
 
-	# TODO: Write "latest_model function, to wrap a regex file search"
-	brown_model = Model("backend/brown-20171219.model")
+	# TODO: Write "latest_model" function, to wrap a regex file search"
+	brown_model = Model("analogies/backend/brown-20171219.model")
 	word_embedding = brown_model.lookup(text)
-	return render_template("word-embedding.html", output=word_embedding)
+	return render_template("word-embedding.html", output=word_embedding.tolist())
 
 
 
