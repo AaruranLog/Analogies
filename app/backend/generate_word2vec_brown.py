@@ -31,6 +31,15 @@ class CustomCorpus():
                 continue
         raise StopIteration
 
+    def empty(self):
+        """Checks if self has finished"""
+        return not self.__usable_categories
+
+    @property
+    def categories(self):
+        """Returns all categories from init"""
+        return self.permitted_categories
+
 def main():
     """
         Entry point
