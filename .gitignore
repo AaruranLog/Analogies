@@ -3,5 +3,10 @@
 app/__pycache__/*
 analogy.pem
 connect.sh
-*__pycache__/*
+*__pycache__*
 GoogleNews-vectors-negative300.*
+.DS_Store
+*.egg-info/*
+build/*
+dist/*
+tests/.cache/*

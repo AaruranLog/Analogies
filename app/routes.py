@@ -1,6 +1,6 @@
 from flask import render_template, request
 from app import app
-
+from . import backend
 
 @app.route('/')
 @app.route('/index')
@@ -37,10 +37,28 @@ def predict_post():
 		value = str(value ** 2)
 		print("squared successfully")
 	except:
-		print(f"type(value): {type(value)}")
 		print(f"value:{value}")
 		value = "Invalid input"
 
 	return render_template("my-form.html", output=value)
+
+
+@app.route('/brown/word')
+def brown_word2vec():
+	return render_template('my-form.html')
+
+@app.route('/brown/word/', methods=['POST'])
+def brown_word2vec_post():
+	text = request.form['text']
+	print(f"text:{text}")
+
+	# TODO: Write "latest_model function, to wrap a regex file search"
+	brown_model = Model("backend/brown-20171219.model")
+	word_embedding = brown_model.lookup(text)
+	return render_template("word-embedding.html", output=word_embedding)
+
+
+
+
 
 	
