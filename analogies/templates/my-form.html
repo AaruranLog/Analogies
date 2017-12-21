@@ -1,9 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
 <form method="POST">
 	Enter your input: <input name="text">
     <input type="submit">
     {% if output %}
-    <h1>
+    <h4>
     	Here is the output: {{output}}
-    </h1>
+    </h4>
     {% endif %}
 </form>
+{% endblock %}
