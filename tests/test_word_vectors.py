@@ -1,7 +1,7 @@
 """Tests for app.backend.word_vectors"""
 
 import unittest
-from app.backend import word_vectors as wv
+from analogies.backend import word_vectors as wv
 
 
 class TestModel(unittest.TestCase):
@@ -18,6 +18,6 @@ class TestModel(unittest.TestCase):
 
     def test_load_passes(self):
         try:
-            Model("backend/brown-20171219.model")
+            wv.Model("analogies/backend/brown-20171219.model")
         except:
             raise AssertionError("Failed to load existing model")
