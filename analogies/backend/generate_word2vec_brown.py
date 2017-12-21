@@ -19,7 +19,7 @@ class CustomCorpus():
                               "hobbies", "learned", "mystery", "news",
                               "religion", "romance", "science_fiction"]}
 
-    def __init__(self, corpora_choice=0):
+    def __init__(self, corpora_choice=1):
         categories = self.category_selection[corpora_choice]
         self.permitted_categories = categories
         self.__usable_categories = self.permitted_categories
