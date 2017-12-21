@@ -18,6 +18,6 @@ class TestModel(unittest.TestCase):
 
     def test_load_passes(self):
         try:
-            wv.Model("analogies/backend/brown-20171219.model")
+            wv.Model("analogies/backend/brown-20171221.vec")
         except:
             raise AssertionError("Failed to load existing model")

@@ -19,7 +19,7 @@ class CustomCorpus():
                               "hobbies", "learned", "mystery", "news",
                               "religion", "romance", "science_fiction"]}
 
-    def __init__(self, corpora_choice=1):
+    def __init__(self, corpora_choice=0):
         categories = self.category_selection[corpora_choice]
         self.permitted_categories = categories
         self.__usable_categories = self.permitted_categories
@@ -61,21 +61,14 @@ def main():
     model = gensim.models.word2vec.Word2Vec(sentences=text)
     todays_date = datetime.date.today().strftime("%Y%m%d")
     model_name = "brown-" + todays_date + ".vec"
-    model.wv.save_word2vec_format("/~/Documents/git-repos/Analogies/analogies/backend/"
-                                  + model_name,
-                                  binary=True)
+    model.wv.save_word2vec_format(model_name, binary=True)
     print("Model saved")
     print("=" * 20)
     print("Tests")
     print("=" * 20)
     print("expected: girl")
     print("Actual: ")
-    print(model.doesnt_match("man boy girl".split(" ")))
-
-    print("expected: fish")
-    print("Actual: ")
-    model.doesnt_match("balance account interest fish".split(" "))
-
+    print(model.doesnt_match("man boy girl brother father".split(" ")))
 
 if __name__ == "__main__":
     main()

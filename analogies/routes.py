@@ -63,6 +63,6 @@ def brown_word2vec_post():
     print(f"text:{text}")
 
     # TODO: Write "latest_model" function, to wrap a regex file search"
-    brown_model = Model("analogies/backend/brown-20171221.model")
+    brown_model = Model("analogies/backend/brown-20171221.vec")
     word_embedding = brown_model.lookup(text)
     return render_template("word-embedding.html", output=word_embedding.tolist())
