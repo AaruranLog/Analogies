@@ -1,12 +1,12 @@
-#Analogies
+# Analogies
 Analogy solver using word embeddings
 
 ## Launch App
-
+```
 cd Analogies/
 export FLASK_APP=microblog.py
 flask run
-
+```
 
 ## Relevant Links
 
