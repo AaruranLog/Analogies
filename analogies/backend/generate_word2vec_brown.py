@@ -67,7 +67,7 @@ def main():
     print("Tests")
     print("=" * 20)
     print("expected: girl")
-    print("Actual: ")
+    print("Actual: ", end="")
     print(model.doesnt_match("man boy girl brother father".split(" ")))
 
 if __name__ == "__main__":
