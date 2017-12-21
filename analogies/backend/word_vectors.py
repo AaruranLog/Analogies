@@ -23,7 +23,7 @@ class Model(object):
             return self.model[word]
         except KeyError:
             warnings.warn(f"Failed to find: {word} in model vocabulary", UserWarning)
-            return [None]
+            return None
 
     def analogy(self, word1, target1, word2):
         """Returns the solution to the given analogy"""

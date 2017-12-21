@@ -1,3 +1,4 @@
+"""init for analogies app"""
 from flask import Flask
 from analogies.utils.config import Config
 

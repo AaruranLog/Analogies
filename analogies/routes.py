@@ -65,4 +65,8 @@ def brown_word2vec_post():
     # TODO: Write "latest_model" function, to wrap a regex file search"
     brown_model = Model("analogies/backend/brown-20171221.vec")
     word_embedding = brown_model.lookup(text)
-    return render_template("word-embedding.html", output=word_embedding.tolist())
+    if word_embedding is None:
+        display = [f"{text} is not in the vocabulary"]
+    else:
+        display = word_embedding.tolist()
+    return render_template("word-embedding.html", output=display)
