@@ -30,9 +30,9 @@ class Model(object):
         """Returns the solution to the given analogy"""
         # TODO: include doctests here later
         try:
-            target2 = self.model.wv.most_similar_cosmul(
-                positive=[word2, target1], negative=[word1])
+            target2 = self.model.most_similar_cosmul(positive=[word2, target1], negative=[word1])
             return target2
         except KeyError:
             statement = f"{word1} is to {target1} as {word2} is to ?"
             warnings.warn(f"Failed to find solution to analogy: {statement}", UserWarning)
+            return None

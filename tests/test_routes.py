@@ -8,7 +8,7 @@ class AnalogiesTestCase(unittest.TestCase):
 
     def test_blank(self):
         url_list = ["/", "/index", "/source-code", "/predict",
-                    "/brown/word"]
+                    "/brown/word", "/brown/analogy"]
 
         for url in url_list:
             try:

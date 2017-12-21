@@ -75,3 +75,24 @@ def brown_word2vec_post():
     else:
         display = word_embedding.tolist()
     return render_template("word-embedding.html", output=display)
+
+
+@app.route('/brown/analogy')
+def brown_analogy():
+    return render_template("analogy.html")
+
+
+@app.route('/brown/analogy', methods=['POST'])
+def brown_analogy_post():
+    word1 = request.form['word1']
+    target1 = request.form['target1']
+    word2 = request.form['word2']
+
+    # TODO: Write "latest_model" function, to wrap a regex file search"
+    brown_model = Model("analogies/backend/brown-20171221.vec")
+    target2 = brown_model.analogy(word1, target1, word2)
+
+    if target2 is None:
+        target2 = "***We can't solve this analogy. Corpus vocabulary is too small."
+
+    return render_template("analogy.html", output=target2)  # placeholder as we debug UI

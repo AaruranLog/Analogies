@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/brown/analogy" method="POST">
+	<input name="word1"> is to <input name="target1"> as <input name="word2"> is to ? <br>
+    <input type="submit">
+    {% if output %}
+    	<h4>{{ output }}</h4>
+    {% endif %}
+</form>
+{% endblock %}
