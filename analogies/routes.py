@@ -1,7 +1,11 @@
+# coding: utf-8
+"""
+    App URLs
+"""
 from flask import render_template, request
 from analogies import app
 from analogies.backend.word_vectors import Model
-import numpy as np
+import numpy
 
 
 @app.route('/')
@@ -18,7 +22,8 @@ def index():
 @app.route('/references')
 def references():
     git_link = 'https://github.com/AaruranE/Analogies'
-    megatutorial_link = "https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world"
+    megatutorial_link = "https://blog.miguelgrinberg.com/" \
+                        "post/the-flask-mega-tutorial-part-i-hello-world"
     sources = [
         {
             "link":git_link,

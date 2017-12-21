@@ -6,6 +6,7 @@ import gensim.models.word2vec as w2v
 from gensim.models.keyedvectors import KeyedVectors
 import warnings
 
+
 class Model(object):
     """Class for loading a saved model"""
     def __init__(self, path):
