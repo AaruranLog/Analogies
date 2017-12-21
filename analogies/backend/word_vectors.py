@@ -1,22 +1,21 @@
 """
-	Helper functions for pre-trained model usage
+Helper functions for pre-trained model usage
 """
 
-import gensim
 import gensim.models.word2vec as w2v
+from gensim.models.keyedvectors import KeyedVectors
 
 
 class Model(object):
     """Class for loading a saved model"""
-
     def __init__(self, path):
         super(Model, self).__init__()
         self.path = path
         try:
-            self.model = gensim.models.Word2Vec.load(path)
+            self.model = KeyedVectors.load_word2vec_format(path, binary=True)
         except FileNotFoundError:
             self.model = None
-            raise ValueError("File not found at path: {path}")
+            raise FileNotFoundError("Model not found at path: {path}")
 
     def lookup(self, word):
         """Lookup word in model and return embedded vector"""
@@ -34,4 +33,4 @@ class Model(object):
             return target2
         except Exception:
             statement = f"{word1} is to {target1} as {word2} is to ?"
-            raise ValueError("Failed to find solution to analogy: {statement}")
+            raise ValueError(f"Failed to find solution to analogy: {statement}")
