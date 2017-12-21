@@ -1,4 +1,4 @@
-#Analogies
+# Analogies
 Analogy solver using word embeddings
 
 ## Launch App
