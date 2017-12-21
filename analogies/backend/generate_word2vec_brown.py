@@ -6,10 +6,21 @@ import datetime
 import gensim.models.word2vec
 from nltk.corpus import brown
 
+
 class CustomCorpus():
     """Implements iterator protocol to yield sentences from brown corpus"""
-    def __init__(self, categories=["humor", "lore", "adventure",
-                                   "fiction", "learned", "news", "reviews"]):
+
+    category_selection = {0: ["humor"],
+                          1: ["humor", "lore", "adventure",
+                              "fiction", "learned", "news", "reviews"],
+                          2: ["humor", "lore", "adventure",
+                              "fiction", "learned", "news", "reviews",
+                              "belles_lettres", "editorial", "government",
+                              "hobbies", "learned", "mystery", "news",
+                              "religion", "romance", "science_fiction"]}
+
+    def __init__(self, corpora_choice=1):
+        categories = self.category_selection[corpora_choice]
         self.permitted_categories = categories
         self.__usable_categories = self.permitted_categories
         self.corpus = brown
@@ -41,6 +52,7 @@ class CustomCorpus():
         """Returns all categories from init"""
         return self.permitted_categories
 
+
 def main():
     """
         Entry point
@@ -49,10 +61,10 @@ def main():
     model = gensim.models.word2vec.Word2Vec(sentences=text)
     todays_date = datetime.date.today().strftime("%Y%m%d")
     model_name = "brown-" + todays_date + ".vec"
-    model.wv.save_word2vec_format("/Users/fxf231/Documents/git-repos/Analogies/app/backend/" + model_name,
+    model.wv.save_word2vec_format("/~/Documents/git-repos/Analogies/analogies/backend/"
+                                  + model_name,
                                   binary=True)
     print("Model saved")
-
     print("=" * 20)
     print("Tests")
     print("=" * 20)

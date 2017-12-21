@@ -2,5 +2,7 @@
 
 {% block content %}
     <h1>References</h1>
-    <div><p>Here is the <a href="{{git_link}}">link to the source code </a> for this website</p></div>
+    {% for source in sources %}
+    <div><p><a href="{{source.link}}">{{  source.name }}</a></p></div>
+    {% endfor %}
 {% endblock %}

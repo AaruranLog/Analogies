@@ -5,17 +5,32 @@ import numpy as np
 
 
 @app.route('/')
+def root():
+    return render_template("base.html", title='Home')
+
+
 @app.route('/index')
 def index():
     return render_template('index.html', title='Home')
 
+
 # TODO: update this route to include Flask Mega-tutorial etc.
-
-
-@app.route('/source-code')
-def source():
+@app.route('/references')
+def references():
     git_link = 'https://github.com/AaruranE/Analogies'
-    return render_template('references.html', title='Source Code', git_link=git_link)
+    megatutorial_link = "https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world"
+    sources = [
+        {
+            "link":git_link,
+            "name":"Source Code"
+        },
+        {
+            "link": megatutorial_link,
+            "name": "The Flask Mega-Tutorial"
+        }
+    ]
+
+    return render_template('references.html', sources=sources)
 
 
 @app.route('/predict')
@@ -32,7 +47,6 @@ def predict_post():
         value = str(value ** 2)
         print("squared successfully")
     except:
-        print(f"value:{value}")
         value = "Invalid input"
 
     return render_template("my-form.html", output=value)
@@ -49,6 +63,6 @@ def brown_word2vec_post():
     print(f"text:{text}")
 
     # TODO: Write "latest_model" function, to wrap a regex file search"
-    brown_model = Model("analogies/backend/brown-20171219.model")
+    brown_model = Model("analogies/backend/brown-20171221.model")
     word_embedding = brown_model.lookup(text)
     return render_template("word-embedding.html", output=word_embedding.tolist())
