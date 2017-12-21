@@ -48,8 +48,9 @@ def main():
     text = CustomCorpus()
     model = gensim.models.word2vec.Word2Vec(sentences=text)
     todays_date = datetime.date.today().strftime("%Y%m%d")
-    model_name = "brown-" + todays_date + ".model"
-    model.save("/Users/fxf231/Documents/git-repos/Analogies/app/backend/" + model_name)
+    model_name = "brown-" + todays_date + ".vec"
+    model.wv.save_word2vec_format("/Users/fxf231/Documents/git-repos/Analogies/app/backend/" + model_name,
+                                  binary=True)
     print("Model saved")
 
     print("=" * 20)
