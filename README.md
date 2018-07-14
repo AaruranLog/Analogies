@@ -2,6 +2,8 @@
 Analogy solver using word embeddings
 
 ## Launch App
+
+Assuming that you have installed the contents of the requirements.txt file into your preferred virtual environment, proceed with these instructions in a bash shell
 ```
 cd Analogies/
 export FLASK_APP=microblog.py
