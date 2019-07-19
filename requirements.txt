@@ -1,7 +1,7 @@
-setuptools==41.0.1
-gensim==3.4.0
 numpy==1.16.4
-nltk==3.4.4
 Flask==1.1.1
+gensim==3.4.0
+setuptools==41.0.1
+nltk==3.4.4
 flask_wtf==0.14.2
 WTForms==2.2.1
