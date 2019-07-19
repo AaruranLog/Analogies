@@ -2,12 +2,11 @@
 Helper functions for pre-trained model usage
 """
 
-import gensim.models.word2vec as w2v
-from gensim.models.keyedvectors import KeyedVectors
 import warnings
+from gensim.models.keyedvectors import KeyedVectors
 
 
-class Model(object):
+class Model:
     """Class for loading a saved model"""
     def __init__(self, path):
         super(Model, self).__init__()

@@ -5,7 +5,7 @@
 import getpass
 
 
-class Config(object):
+class Config:
     """App configuration"""
     USERNAME = getpass.getuser() or "anonymous-user"
 

@@ -5,7 +5,6 @@
 from flask import render_template, request
 from analogies import app
 from analogies.backend.word_vectors import Model
-import numpy
 
 
 @app.route('/')
@@ -18,7 +17,6 @@ def index():
     return render_template('index.html', title='Home')
 
 
-# TODO: update this route to include Flask Mega-tutorial etc.
 @app.route('/references')
 def references():
     git_link = 'https://github.com/AaruranE/Analogies'
